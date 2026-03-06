@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #6a11cb, #2575fc, #ff512f, #dd2476);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+/* Animated Background */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glass Card */
+.container {
+    width: 420px;
+    padding: 35px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: white;
+    transition: 0.3s;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h3 {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Buttons */
+button {
+    padding: 12px 18px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Start & Next Buttons */
+#start-btn,
+#next-btn,
+#restart-btn {
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+    color: white;
+}
+
+#start-btn:hover,
+#next-btn:hover,
+#restart-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Options Styling */
+#options button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+#options button:hover {
+    background: rgba(255,255,255,0.35);
+    transform: translateY(-2px);
+}
+
+/* Selected Option */
+#options button.selected {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    border: none;
+}
+
+/* Result Section */
+#final-score {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#feedback {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* Hidden Class */
+.hidden {
+    display: none;
+}
