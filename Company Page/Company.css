@@ -1,0 +1,160 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(to right, #f5f7fa, #e4ecf5);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #00695c, #26a69a);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: 0.95;
+}
+
+/* Section Styling */
+section {
+    background-color: #ffffff;
+    padding: 50px 25px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 1100px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #00695c;
+    font-size: 28px;
+}
+
+/* About Text */
+.about p {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    font-size: 16px;
+}
+
+/* Services */
+.service-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background: linear-gradient(to bottom, #ffffff, #f1f8f7);
+    padding: 25px;
+    width: 260px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid #b2dfdb;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card h3 {
+    color: #00695c;
+    margin-bottom: 10px;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Testimonials */
+.testimonial {
+    background-color: #f1f8f7;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-left: 6px solid #26a69a;
+    border-radius: 8px;
+    font-style: italic;
+}
+
+.testimonial h4 {
+    margin-top: 10px;
+    text-align: right;
+    color: #00695c;
+}
+
+/* Contact */
+.contact {
+    text-align: center;
+}
+
+.contact p {
+    margin: 6px 0;
+}
+
+.contact-form {
+    margin-top: 25px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 85%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #b2dfdb;
+    font-size: 15px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #26a69a;
+}
+
+/* Button */
+.contact-form button {
+    padding: 12px 30px;
+    background: linear-gradient(to right, #00695c, #26a69a);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 15px;
+    margin-top: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(to right, #00695c, #004d40);
+    color: white;
+    text-align: center;
+    padding: 18px;
+    margin-top: 30px;
+    font-size: 14px;
+}
