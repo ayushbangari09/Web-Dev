@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sports Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Start Section -->
+    <div id="start-container">
+        <h1>🏆 Sports Quiz</h1>
+        <button id="start-btn">Start Quiz</button>
+    </div>
+
+    <!-- Quiz Section -->
+    <div id="quiz-container" class="hidden">
+        <h3 id="question"></h3>
+        <div id="options"></div>
+        <button id="next-btn" disabled>Next</button>
+    </div>
+
+    <!-- Result Section -->
+    <div id="result-container" class="hidden">
+        <h2 id="final-score"></h2>
+        <p id="feedback"></p>
+        <button id="restart-btn">Restart Quiz</button>
+    </div>
+
+</div>
+
+<script src="quiz.js"></script>
+</body>
+</html>
