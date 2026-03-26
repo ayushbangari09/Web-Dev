@@ -1,0 +1,105 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  color: white;
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+  font-size: 24px;
+}
+
+.box {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 15px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.section {
+  padding: 20px;
+  text-align: center;
+}
+
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 90%;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  padding: 10px 15px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #38bdf8;
+  color: black;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: #0ea5e9;
+}
+
+.grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px;
+  scroll-behavior: smooth;   /* smooth scrolling */
+}
+
+.grid div {
+  min-width: 220px;   /* increase width */
+  max-width: 220px;   /* fix size */
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: 0.3s;
+}
+
+.grid {
+  align-items: stretch;
+}
+
+.grid div:hover {
+  transform: scale(1.05);
+}
+
+/* Optional scrollbar styling */
+.grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.grid::-webkit-scrollbar-thumb {
+  background: #38bdf8;
+  border-radius: 10px;
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #1e293b;
+  margin: 5px;
+  padding: 8px;
+  border-radius: 8px;
+}
