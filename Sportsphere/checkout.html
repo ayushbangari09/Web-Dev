@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secure Payment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 style="text-align:center;">💳 Secure Payment</h1>
+
+<div class="payment-box">
+
+  <h3>Select Payment Method</h3>
+
+  <select id="method" onchange="showFields()">
+    <option value="upi">UPI</option>
+    <option value="card">Card</option>
+  </select>
+
+  <!-- UPI -->
+  <div id="upiBox">
+    <input id="upi" placeholder="Enter UPI ID (example@upi)">
+  </div>
+
+  <!-- CARD -->
+  <div id="cardBox" style="display:none;">
+    <input placeholder="Card Number">
+    <input placeholder="Expiry Date">
+    <input placeholder="CVV">
+  </div>
+
+  <input id="address" placeholder="Delivery Address">
+
+  <button onclick="pay()">Proceed to Pay</button>
+
+</div>
+
+<!-- OTP BOX -->
+<div class="payment-box" id="otpBox" style="display:none;">
+  <h3>Enter OTP</h3>
+  <input id="otp" placeholder="Enter OTP">
+  <button onclick="verifyOTP()">Verify</button>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function showFields() {
+  let method = document.getElementById("method").value;
+
+  document.getElementById("upiBox").style.display =
+    method === "upi" ? "block" : "none";
+
+  document.getElementById("cardBox").style.display =
+    method === "card" ? "block" : "none";
+}
+
+function pay() {
+  let address = document.getElementById("address").value;
+
+  if (!address) {
+    alert("Enter address");
+    return;
+  }
+
+  alert("📩 OTP sent to your registered mobile");
+
+  document.querySelector(".payment-box").style.display = "none";
+  document.getElementById("otpBox").style.display = "block";
+}
+
+async function verifyOTP() {
+  let otp = document.getElementById("otp").value;
+
+  if (otp !== "1234") {
+    alert("Invalid OTP");
+    return;
+  }
+
+  await fetch("http://localhost:5000/order", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ cart })
+  });
+
+  alert("✅ Payment Successful! Order Placed");
+
+  localStorage.removeItem("cart");
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
