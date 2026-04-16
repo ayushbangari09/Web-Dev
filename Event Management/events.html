@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 style="text-align:center; margin-top:20px;">Upcoming Events</h2>
+
+<div class="events">
+    {% for event in events %}
+    <div class="card">
+        <h3>{{ event.name }}</h3>
+
+        <p><i class="ri-calendar-line"></i> {{ event.date }}</p>
+        <p><i class="ri-map-pin-line"></i> {{ event.venue }}</p>
+
+        <a href="/register" class="btn">Register</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
