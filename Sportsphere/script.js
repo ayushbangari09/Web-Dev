@@ -1,11 +1,16 @@
+let allProducts = [];
 let cart = [];
-let total = 0;
 
 // LOAD PRODUCTS
 async function loadProducts() {
   let res = await fetch("http://localhost:5000/products");
-  let data = await res.json();
+  allProducts = await res.json();
 
+  displayProducts(allProducts);
+}
+
+// DISPLAY PRODUCTS
+function displayProducts(data) {
   let container = document.getElementById("products");
   container.innerHTML = "";
 
@@ -13,20 +18,69 @@ async function loadProducts() {
     let div = document.createElement("div");
 
     div.innerHTML = `
-      <img src="images/${p.name.toLowerCase().replace(/\s/g, '')}.jpg" alt="${p.name}">
-      <h3>${p.name}</h3>
-      <p>₹${p.price}</p>
-      <button onclick='addToCart(${JSON.stringify(p)})'>Add</button>
+      <div class="product-card">
+        <img src="images/${p.name.toLowerCase().replace(/\s/g,'')}.jpg">
+        <h3>${p.name}</h3>
+        <p class="price">₹${p.price}</p>
+
+        <div class="qty">
+          <button onclick="removeFromCart('${p.name}')">-</button>
+          <span>${getQty(p.name)}</span>
+          <button onclick='addToCart(${JSON.stringify(p)})'>+</button>
+        </div>
+      </div>
     `;
 
     container.appendChild(div);
   });
 }
-// ADD TO CART
+
+// FILTER PRODUCTS (SIDEBAR)
+function filterProducts(category) {
+  if (category === "all") {
+    displayProducts(allProducts);
+  } else {
+    let filtered = allProducts.filter(p =>
+      p.name.toLowerCase().includes(category)
+    );
+    displayProducts(filtered);
+  }
+}
+
+// ADD ITEM
 function addToCart(p) {
-  cart.push(p);
-  total += p.price;
+  let item = cart.find(i => i.name === p.name);
+
+  if (item) {
+    item.qty++;
+  } else {
+    cart.push({ ...p, qty: 1 });
+  }
+
   renderCart();
+  displayProducts(allProducts); // refresh qty
+}
+
+// REMOVE ITEM
+function removeFromCart(name) {
+  let item = cart.find(i => i.name === name);
+
+  if (!item) return;
+
+  item.qty--;
+
+  if (item.qty <= 0) {
+    cart = cart.filter(i => i.name !== name);
+  }
+
+  renderCart();
+  displayProducts(allProducts);
+}
+
+// GET QTY
+function getQty(name) {
+  let item = cart.find(i => i.name === name);
+  return item ? item.qty : 0;
 }
 
 // RENDER CART
@@ -34,14 +88,19 @@ function renderCart() {
   let ul = document.getElementById("cart");
   ul.innerHTML = "";
 
+  let total = 0;
+
   cart.forEach(item => {
     let li = document.createElement("li");
-    li.textContent = item.name + " - ₹" + item.price;
+    li.textContent = `${item.name} x${item.qty} = ₹${item.price * item.qty}`;
     ul.appendChild(li);
+
+    total += item.price * item.qty;
   });
 
   document.getElementById("total").textContent = "Total: ₹" + total;
 }
+
 // LOGIN
 async function login() {
   let username = document.getElementById("username").value;
@@ -57,35 +116,20 @@ async function login() {
   alert(data.message);
 
   if (data.message === "Login successful") {
-    // Hide login box
     document.getElementById("login").style.display = "none";
+    document.getElementById("mainApp").style.display = "block";
 
-    // Show products + cart
-    document.getElementById("productSection").style.display = "block";
-    document.getElementById("cartSection").style.display = "block";
-
-    // Load products
     loadProducts();
   }
 }
 
 // CHECKOUT
-async function checkout() {
+function checkout() {
   if (cart.length === 0) {
     alert("Cart is empty");
     return;
   }
 
-  await fetch("http://localhost:5000/order", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ cart })
-  });
-
-  alert("Order placed successfully!");
-  cart = [];
-  total = 0;
-  renderCart();
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.location.href = "checkout.html";
 }
-
-
