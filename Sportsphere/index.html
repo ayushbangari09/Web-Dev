@@ -3,35 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SportSphere</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>SportSphere Store</h1>
+<!-- NAVBAR -->
+<header class="navbar">
+  <h1>SportSphere</h1>
+  <p class="tagline">Your Ultimate Sports Store</p>
+
+  <!-- USER INFO -->
+  <div id="userInfo" style="display:none; margin-top:10px;">
+    <span id="welcomeUser"></span>
+    <button onclick="logout()" style="margin-left:10px;">Logout</button>
+  </div>
+</header>
 
 <!-- LOGIN -->
-<div class="box" id="login">
-  <h2>Login</h2>
-  <input id="username" placeholder="Username">
-  <input id="password" type="password" placeholder="Password">
-  <button onclick="login()">Login</button>
+<div class="login-container" id="login">
+  <div class="login-box">
+    <h2>Welcome Back 👋</h2>
+    <p>Login to continue shopping</p>
+    <input id="username" placeholder="Username">
+    <input id="password" type="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+  </div>
 </div>
 
-<!-- PRODUCTS -->
-<div class="box" id="productSection" style="display:none;">
-  <h2>Products</h2>
-  <div id="products" class="grid"></div>
-</div>
+<!-- MAIN APP -->
+<div id="mainApp" style="display:none;">
 
-<!-- CART -->
-<div class="box" id="cartSection" style="display:none;">
-  <h2>Cart</h2>
-  <ul id="cart"></ul>
-  <h3 id="total">Total: ₹0</h3>
-  <button onclick="checkout()">Checkout</button>
+  <div class="main">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+      <h3>Categories</h3>
+
+      <button onclick="filterProducts('all')">All</button>
+      <button onclick="filterProducts('jersey')">Jersey</button>
+      <button onclick="filterProducts('shoes')">Shoes</button>
+      <button onclick="filterProducts('football')">Football</button>
+      <button onclick="filterProducts('cricket')">Cricket</button>
+      <button onclick="filterProducts('tennis')">Tennis</button>
+      <button onclick="filterProducts('hockey')">Hockey</button>
+      <button onclick="filterProducts('basketball')">Basketball</button>
+      <button onclick="filterProducts('baseball')">Baseball</button>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div class="content">
+      <h2>Products</h2>
+
+      <!-- LOADING TEXT -->
+      <p id="loadingText">Loading products...</p>
+
+      <div id="products" class="grid"></div>
+    </div>
+
+    <!-- RIGHT CART -->
+    <div class="cart-side">
+      <h2>Cart 🛒</h2>
+      <ul id="cart"></ul>
+      <h3 id="total">Total: ₹0</h3>
+
+      <!-- AMAZON STYLE BUTTON -->
+      <button onclick="checkout()" style="width:100%; margin-top:10px;">
+        Proceed to Buy
+      </button>
+    </div>
+
+  </div>
+
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
