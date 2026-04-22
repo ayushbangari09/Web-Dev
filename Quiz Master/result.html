@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>{{ username }}, Your Score: {{ score }}/10 🎉</h2>
+
+    <hr>
+
+    {% for r in results %}
+        <div class="result-box">
+            <p><b>{{ loop.index }}. {{ r.question }}</b></p>
+            <p>Your Answer: {{ r.your_answer }}</p>
+            <p>Correct Answer: {{ r.correct_answer }}</p>
+            <p>Status: {{ r.status }}</p>
+        </div>
+        <hr>
+    {% endfor %}
+
+    <a href="/">
+        <button>Restart</button>
+    </a>
+</div>
+
+</body>
+</html>
