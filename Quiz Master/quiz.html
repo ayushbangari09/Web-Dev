@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Welcome, {{ username }} 👋</h2>
+    <h3>Time Left: <span id="timer">30</span>s</h3>
+
+    <form id="quizForm" action="/result" method="POST">
+        <input type="hidden" name="username" value="{{ username }}">
+
+        {% for q in quiz %}
+            <div class="question">
+                <p><b>{{ loop.index }}. {{ q.question }}</b></p>
+
+                {% for opt in q.options %}
+                    <label>
+                        <input type="radio" name="q{{ loop.index0 }}" value="{{ opt }}" required>
+                        {{ opt }}
+                    </label><br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+let timeLeft = 60;
+let timer = document.getElementById("timer");
+
+let countdown = setInterval(() => {
+    timeLeft--;
+    timer.textContent = timeLeft;
+
+    if (timeLeft <= 0) {
+        clearInterval(countdown);
+        alert("Time's up!");
+        document.getElementById("quizForm").submit();
+    }
+}, 1000);
+
+// confirm submit
+document.getElementById("quizForm").addEventListener("submit", function(e){
+    if(!confirm("Submit quiz?")){
+        e.preventDefault();
+    }
+});
+</script>
+
+</body>
+</html>
