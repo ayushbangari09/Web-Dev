@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!--
+        Project: E-commerce Website
+        Name: Ayush Bangari
+        Date: 2026
+    -->
+    <meta charset="UTF-8">
+    <title>E-Commerce Website</title>
+
+```
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+<body>
+
+<header>
+    <h1>My E-Commerce Store</h1>
+    <p>Welcome! Shop the best products here.</p>
+</header>
+
+<!-- Products -->
+
+<section class="products">
+    <h2>Products</h2>
+
+```
+<div class="product-container">
+
+    <!-- Product 1 -->
+    <div class="card">
+        <img src="./images/phone.jpg" alt="Smartphone">
+        <div class="card-content">
+            <h3>Smartphone</h3>
+            <p class="price">₹20,000</p>
+            <p>Latest Android phone</p>
+            <button onclick="addToCart(1, 'Smartphone', 20000)">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="card">
+        <img src="./images/laptop.jpg" alt="Laptop">
+        <div class="card-content">
+            <h3>Laptop</h3>
+            <p class="price">₹50,000</p>
+            <p>High performance laptop</p>
+            <button onclick="addToCart(2, 'Laptop', 50000)">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="card">
+        <img src="./images/headphones.jpg" alt="Headphones">
+        <div class="card-content">
+            <h3>Headphones</h3>
+            <p class="price">₹2,000</p>
+            <p>Noise cancelling</p>
+            <button onclick="addToCart(3, 'Headphones', 2000)">Add to Cart</button>
+        </div>
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- Cart -->
+
+<section class="cart">
+    <h2>Shopping Cart</h2>
+    <ul id="cart-items"></ul>
+    <h3>Total: ₹<span id="total">0</span></h3>
+
+```
+<!-- NEW Checkout Button -->
+<button onclick="goToCheckout()">Proceed to Checkout</button>
+```
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
