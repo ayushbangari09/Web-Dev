@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Checkout</h1>
+</header>
+
+<section class="checkout">
+    <h2>Your Order</h2>
+    <ul id="checkout-items"></ul>
+    <h3>Total: ₹<span id="total"></span></h3>
+
+```
+<h2>Enter Details</h2>
+<input type="text" id="name" placeholder="Enter Name">
+<input type="text" id="address" placeholder="Enter Address">
+
+<button onclick="placeOrder()">Pay Now</button>
+
+<p id="message"></p>
+```
+
+</section>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let total = 0;
+let list = document.getElementById("checkout-items");
+
+cart.forEach(item => {
+    let li = document.createElement("li");
+    let itemTotal = item.price * item.quantity;
+    total += itemTotal;
+
+    li.innerText = `${item.name} x${item.quantity} - ₹${itemTotal}`;
+    list.appendChild(li);
+});
+
+document.getElementById("total").innerText = total;
+
+function placeOrder() {
+    let name = document.getElementById("name").value;
+
+    document.getElementById("message").innerText =
+        "Payment Successful! Thank you " + name;
+
+    localStorage.removeItem("cart");
+}
+</script>
+
+</body>
+</html>
