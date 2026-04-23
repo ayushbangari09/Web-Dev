@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav>
+    <h2>📇 Contact Manager</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/add">Add Contact</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+
+</body>
+</html>
