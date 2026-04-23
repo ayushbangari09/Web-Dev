@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>{{ 'Edit' if contact else 'Add' }} Contact</h3>
+
+<form method="POST">
+    <input type="text" name="name" placeholder="Name" value="{{ contact.name if contact else '' }}">
+    <input type="text" name="phone" placeholder="Phone" value="{{ contact.phone if contact else '' }}">
+    <input type="email" name="email" placeholder="Email" value="{{ contact.email if contact else '' }}">
+    <button type="submit">{{ 'Update' if contact else 'Add' }}</button>
+</form>
+
+{% endblock %}
