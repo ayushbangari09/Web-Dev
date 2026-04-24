@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>All Blog Posts</h2>
+
+{% if posts %}
+    {% for post in posts %}
+        <div class="card">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content }}</p>
+
+            <div class="actions">
+                <a href="/edit/{{ loop.index0 }}">Edit</a>
+                <a href="/delete/{{ loop.index0 }}" class="delete">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No posts yet. Create one!</p>
+{% endif %}
+
+{% endblock %}
